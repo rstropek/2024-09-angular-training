@@ -1,0 +1,26 @@
+<form (submit)="onGuess()">
+  <input
+    type="number"
+    name="userGuess"
+    placeholder="Enter your guess"
+    [(ngModel)]="userGuess"
+    #userGuessInput
+  />
+  <button type="submit" [disabled]="userGuess == undefined || found">
+    Guess
+  </button>
+  <button type="button" (click)="onRestart()">Restart</button>
+</form>
+
+<p>{{ feedback }}</p>
+
+@if (guesses.length > 0) {
+<h3>Your Guesses</h3>
+<ul>
+  @for(item of guesses; track $index) {
+  <li>{{ item.guess }} - {{ item.feedback }}</li>
+  } @empty {
+  <li>No guesses yet</li>
+  }
+</ul>
+}
