@@ -1,0 +1,17 @@
+<h2>Two-Way Bindings Demo</h2>
+
+<h3><i>ngModel</i> Binding</h3>
+
+<input type="text" name="ngModelBinding" [(ngModel)]="changingTextSignal"
+  style="width: 75%; margin: 10px; padding: 5px;" />
+<input type="text" name="ngModelBinding" [(ngModel)]="changingTextModel"
+  style="width: 75%; margin: 10px; padding: 5px;" />
+
+<h3>Child Component</h3>
+
+<div class="switcher">
+  <app-tripple-switcher item1="Pasta" item2="Pizza" item3="Burger" [(selection)]="selection"></app-tripple-switcher>
+  <div style="margin-top: 20px;">
+    You chose {{ selection() }}
+  </div>
+</div>
