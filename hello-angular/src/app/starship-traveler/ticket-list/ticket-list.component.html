@@ -1,1 +1,7 @@
-<p>ticket-list works!</p>
+<h1>Your Tickets</h1>
+
+<div id="ticket-list">
+  @for(t of tickets; track t.id) {
+    <app-ticket-card [ticket]="t"></app-ticket-card>
+  }
+</div>

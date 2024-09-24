@@ -1,0 +1,12 @@
+.ticket {
+  text-align: center;
+  margin: 5px;
+  border: 1px solid black;
+  padding: 15px;
+  height: 200px;
+  width: 125px;
+}
+
+.ticket div {
+  margin-top: 15px;
+}

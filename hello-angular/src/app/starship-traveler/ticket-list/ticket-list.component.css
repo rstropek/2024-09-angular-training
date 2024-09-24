@@ -1,0 +1,20 @@
+#ticket-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.ticket {
+  text-align: center;
+  margin: 5px;
+  border: 1px solid black;
+  padding: 15px;
+  height: 200px;
+  width: 125px;
+}
+
+.ticket div {
+  margin-top: 15px;
+}
