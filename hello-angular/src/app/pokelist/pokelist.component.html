@@ -1,11 +1,19 @@
 <h1>Pokemon</h1>
 
-@if (pokelist$) {
-  <ul>
-    @for(p of (pokelist$ | async)?.results; track p.name) {
-      <li>{{ p.name }}</li>
-    }
-  </ul>
+<button (click)="onNext()" [disabled]="isLoading()">Next</button>
 
-  <button (click)="onNext()">Next</button>
+@if(isLoading()) {
+  <p>Loading...</p>
+} @else {
+  Page {{ page() }}
+
+  @if (pokelist()) {
+    <ul>
+      @for(p of pokelist()?.results; track p.name) {
+        <li>{{ p.name }}</li>
+      }
+    </ul>
+  }
+
+  {{ errormsg() }}
 }

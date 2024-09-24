@@ -1,0 +1,54 @@
+import { AsyncPipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, effect, inject, Signal, signal, WritableSignal } from '@angular/core';
+import { takeUntilDestroyed, toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { catchError, firstValueFrom, Observable, switchMap } from 'rxjs';
+
+type PokeapiResponse = {
+  count: number;
+  next: string;
+  previous: string;
+  results: {
+    name: string;
+    url: string;
+  }[];
+};
+
+@Component({
+  selector: 'app-pokelist',
+  standalone: true,
+  imports: [AsyncPipe],
+  templateUrl: './pokelist.component.html',
+  styleUrl: './pokelist.component.css'
+})
+export class PokelistComponent {
+  httpClient = inject(HttpClient);
+  pokelist: WritableSignal<PokeapiResponse | undefined> = signal(undefined);
+  errormsg = signal('');
+  page = signal(0);
+
+  constructor(/* private httpClient: HttpClient */) {
+    // toObservable(this.page).pipe(
+    //   switchMap(p => this.httpClient.get<PokeapiResponse>(`https://pokeapi.co/api/v2/pokemon?offset=${this.page()}`)),
+    //   takeUntilDestroyed()
+    // ).subscribe(pl => this.pokelist.set(pl));
+
+    /*
+    this.pokelist = toSignal(toObservable(this.page).pipe(
+      switchMap(p => this.httpClient.get<PokeapiResponse>(`https://pokeapi.co/api/v2/pokemon?offset=${this.page()}`)),
+      catchError(err => {
+        this.errormsg.set(err.message);
+        return [];
+    }),
+      takeUntilDestroyed()
+    ));
+    */
+  }
+
+  async onNext() {
+    this.page.update(p => p + 20);
+    const response = await firstValueFrom(this.httpClient
+      .get<PokeapiResponse>(`https://pokeapi.co/api/v2/pokemon?offset=${this.page()}`));
+    this.pokelist.set(response);
+  }
+}
