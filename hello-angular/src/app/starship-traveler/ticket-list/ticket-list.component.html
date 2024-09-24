@@ -1,9 +1,9 @@
 <h1>Your Tickets</h1>
 
-<app-time-selector></app-time-selector>
+<app-time-selector [(selection)]="timeSelection"></app-time-selector>
 
 <div id="ticket-list">
-  @for(t of tickets; track t.id) {
+  @for(t of tickets(); track t.id) {
     <app-ticket-card [ticket]="t"></app-ticket-card>
   }
 </div>

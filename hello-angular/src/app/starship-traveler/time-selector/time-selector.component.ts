@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, model, signal } from '@angular/core';
 
 export type TimeSelectorValue = 'future' | 'past';
 
@@ -11,7 +11,7 @@ export type TimeSelectorValue = 'future' | 'past';
   styleUrl: './time-selector.component.css'
 })
 export class TimeSelectorComponent {
-  selection = signal<TimeSelectorValue>('past');
+  selection = model<TimeSelectorValue>('past');
 
   toggle(target: TimeSelectorValue) {
     this.selection.set(target);

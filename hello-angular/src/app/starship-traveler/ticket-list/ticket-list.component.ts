@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, computed, model } from '@angular/core';
 import { demoTickets } from '../data';
 import { TicketCardComponent } from '../ticket-card/ticket-card.component';
-import { TimeSelectorComponent } from '../time-selector/time-selector.component';
+import { TimeSelectorComponent, TimeSelectorValue } from '../time-selector/time-selector.component';
 
 @Component({
   selector: 'app-ticket-list',
@@ -11,5 +11,12 @@ import { TimeSelectorComponent } from '../time-selector/time-selector.component'
   styleUrl: './ticket-list.component.css'
 })
 export class TicketListComponent {
-  tickets = demoTickets;
+  timeSelection = model<TimeSelectorValue>('future');
+
+  tickets = computed(() => demoTickets.filter(ticket => {
+    const now = new Date();
+    return this.timeSelection() === 'future'
+      ? ticket.date >= now
+      : ticket.date < now;
+  }));
 }
