@@ -63,6 +63,15 @@ export const demoTickets: Ticket[] = [
     passenger: 'Arthur Dent',
     time: 1,
   },
+  {
+    date: new Date('2042-01-31T00:00:00'),
+    id: 'M424242',
+    from: 'Earth',
+    to: 'Magrathea',
+    price: 4242.42,
+    passenger: 'Arthur Dent',
+    time: 1,
+  }
 ];
 
 export const bases = new Map([

@@ -19,4 +19,6 @@ export class TicketListComponent {
       ? ticket.date >= now
       : ticket.date < now;
   }));
+
+  numberOfTickets = computed(() => this.tickets().length);
 }

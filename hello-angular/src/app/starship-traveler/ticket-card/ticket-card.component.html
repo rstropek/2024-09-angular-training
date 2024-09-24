@@ -3,4 +3,5 @@
   <div>{{ ticket().from }} -> {{ ticket().to }}</div>
   <div>{{ ticket().price }}</div>
   <div>{{ ticket().date | date: 'mediumDate' }}</div>
+  <div><a [routerLink]="'/tickets/' + ticket().id">Details...</a></div>
 </div>

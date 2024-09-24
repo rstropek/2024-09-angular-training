@@ -2,6 +2,8 @@
 
 <app-time-selector [(selection)]="timeSelection"></app-time-selector>
 
+<p>{{ numberOfTickets() }} Tickets found.</p>
+
 <div id="ticket-list">
   @for(t of tickets(); track t.id) {
     <app-ticket-card [ticket]="t"></app-ticket-card>
