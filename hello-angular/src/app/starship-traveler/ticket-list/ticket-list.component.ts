@@ -1,4 +1,4 @@
-import { Component, computed, model } from '@angular/core';
+import { Component, computed, effect, model } from '@angular/core';
 import { demoTickets } from '../data';
 import { TicketCardComponent } from '../ticket-card/ticket-card.component';
 import { TimeSelectorComponent, TimeSelectorValue } from '../time-selector/time-selector.component';
@@ -21,4 +21,8 @@ export class TicketListComponent {
   }));
 
   numberOfTickets = computed(() => this.tickets().length);
+
+  constructor() {
+    effect(() => console.log(this.timeSelection()));
+  }
 }

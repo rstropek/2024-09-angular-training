@@ -12,5 +12,14 @@ import { JsonPipe } from '@angular/common';
 export class TicketDetailsComponent {
   id = input.required<string>();
 
+  // ticket = signal<Ticket[]>([]);
+
   ticket = computed<Ticket>(() => demoTickets.find(ticket => ticket.id === this.id())!);
+
+  constructor() {
+    // effect(() => {
+    //   console.log(this.id());
+    //   this.ticket.set(demoTickets.filter(ticket => ticket.id === this.id()));
+    // }, { allowSignalWrites: true });
+  }
 }
