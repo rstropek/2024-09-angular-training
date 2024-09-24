@@ -6,6 +6,7 @@ import { NumberGuessingSignalsComponent } from './number-guessing-signals/number
 import { TwoWayDemoComponent } from './two-way-bindings/two-way-demo/two-way-demo.component';
 import { TicketListComponent } from './starship-traveler/ticket-list/ticket-list.component';
 import { TicketDetailsComponent } from './starship-traveler/ticket-details/ticket-details.component';
+import { HelloRxjsComponent } from './hello-rxjs/hello-rxjs.component';
 
 export const routes: Routes = [
   { path: 'greeting', component: GreetingComponent },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'two-way-demo', component: TwoWayDemoComponent },
   { path: 'tickets', component: TicketListComponent },
   { path: 'tickets/:id', component: TicketDetailsComponent },
+  { path: 'rxjs', component: HelloRxjsComponent },
   { path: '', pathMatch: 'full', redirectTo: '/number-guessing' }
 ];
