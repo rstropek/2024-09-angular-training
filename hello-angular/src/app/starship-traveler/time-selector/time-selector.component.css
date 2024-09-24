@@ -1,0 +1,21 @@
+#container {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+#container div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#future {
+  margin-left: 10px;
+}
+
+#container div.selected {
+  background-color: lightblue;
+}
+
+#container div:not(.selected) {
+  background-color: lightgray;
+}

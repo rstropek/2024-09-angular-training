@@ -1,1 +1,4 @@
-<p>time-selector works!</p>
+<div id="container">
+  <div id="past" [ngClass]="{ selected: selection() == 'past' }" (click)="toggle('past')">Past</div>
+  <div id="future" [ngClass]="{ selected: selection() == 'future' }" (click)="toggle('future')">Future</div>
+</div>
