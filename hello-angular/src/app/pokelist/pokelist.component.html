@@ -2,7 +2,7 @@
 
 @if (pokelist$) {
   <ul>
-    @for(p of (pokelist$ | async)!.results; track p.name) {
+    @for(p of (pokelist$ | async)?.results; track p.name) {
       <li>{{ p.name }}</li>
     }
   </ul>
